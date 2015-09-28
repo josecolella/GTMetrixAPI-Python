@@ -39,7 +39,3 @@ class GTMetrixAPI(object):
     def getPageSpeed(self):
         httpRequest = requests.get(self.testResource["resources"]["pagespeed"], auth=self._httpAuthentication)
         return httpRequest.json()
-
-
-username = "jose.colella@dynatrace.com"
-apiKey = "43b7a445ee75fefe746e603d2bf783c2"
