@@ -103,7 +103,7 @@ class GTMetrixAPI(object):
             for possibleRecommendation in possibleRecommendations:
                 cleanRecommendationDetail = re.sub(
                     self._htmlCleanRegex, "", possibleRecommendation["warnings"])
-                file.write("{recommendationName},Score:{recommendationScore};Recommendations:{recommendationDetail}\n".format(recommendationName=possibleRecommendation[
+                file.write("{recommendationName};Score:{recommendationScore};Recommendations:{recommendationDetail}\n".format(recommendationName=possibleRecommendation[
                            "name"], recommendationScore=possibleRecommendation["score"], recommendationDetail=cleanRecommendationDetail))
             file.close()
 
