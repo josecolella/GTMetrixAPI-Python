@@ -99,13 +99,13 @@ class GTMetrixAPI(object):
         self._getPageSpeedInformation()
         possibleRecommendations = filter(
             lambda rule: rule["score"] < 100, self.pageSpeedInformation["rules"])
-        with open(fileName, "w") as file:
+        with open(fileName, "w") as f:
             for possibleRecommendation in possibleRecommendations:
                 cleanRecommendationDetail = re.sub(
                     self._htmlCleanRegex, "", possibleRecommendation["warnings"])
-                file.write("{recommendationName};Score:{recommendationScore};Recommendations:{recommendationDetail}\n".format(recommendationName=possibleRecommendation[
+                f.write("{recommendationName};Score:{recommendationScore};Recommendations:{recommendationDetail}\n".format(recommendationName=possibleRecommendation[
                            "name"], recommendationScore=possibleRecommendation["score"], recommendationDetail=cleanRecommendationDetail))
-            file.close()
+            f.close()
 
     def saveYSlowRecommendations(self, fileName, limit=6):
         """
